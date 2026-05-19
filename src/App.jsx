@@ -1,9 +1,10 @@
-import { MovieLogo } from "./components/landing/MovieLogo"
+import { LandingPage } from "./pages/LandingPage"
 
 function App() {
     return (
         <div>
-        <MovieLogo></MovieLogo>
+        <LandingPage></LandingPage>
+
         </div>
     )
 }
