@@ -40,10 +40,11 @@
   --color-blue: #0070FF;
   --color-bg-page: #131313;
   --color-bg-card: #2A2A2A;
+  --color-text-4k: #E9BCB6;
+  --color-text-tv: #A7C8FF;
 
   /* ── BACKGROUND IMAGES ── */
-  --background-image-hero-glow: radial-gradient(circle at top, rgba(30,58,138,0.3) 0%, rgba(10,10,12,0.9) 80%);
-
+  --background-image-hero-glow: linear-gradient(0deg, #131313 0%, rgba(19, 19, 19, 0.8) 20%, rgba(19, 19, 19, 0) 80%)
   /* ── SPACING ── */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
