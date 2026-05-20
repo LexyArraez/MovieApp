@@ -16,7 +16,7 @@ export const LandingPage = () => {
                     className="w-full h-full object-cover opacity-20"
                 />
             </div>
-            <header>
+            <header className="relative z-10 px-5 py-6 md:px-12">
                 <MovieLogo />
             </header>
             <main className="grow flex flex-col justify-center px-6 md:px-50 ">
