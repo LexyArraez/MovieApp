@@ -21,8 +21,10 @@ export const AuthMenu = () => {
       </div>
 
       <Button
+      className="text-neutral-0"
         variant="text"
         icon={LogIn}>
+        
         Iniciar sesión
       </Button>
 

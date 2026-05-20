@@ -5,10 +5,6 @@ import { MovieLogo } from "../components/common/MovieLogo"
 export const AppLayout = () => {
     return (
         <div className="flex h-screen">
-            <div className="md:hidden fixed top-0 w-full z-10 py-2">
-                <MovieLogo />
-            </div>
-
             <div className="hidden md:flex">
                 <Sidebar />
             </div>

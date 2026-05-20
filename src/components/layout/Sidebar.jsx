@@ -5,7 +5,7 @@ import { MovieLogo } from "../common/MovieLogo"
 
 export const Sidebar = () => {
     return (
-        <div className="w-70 h-screen bg-bg-page flex flex-col">
+        <div className="w-70 h-screen bg-bg-page flex flex-col ">
             <div className="px-3 py-2">
                 <MovieLogo />
             </div>
