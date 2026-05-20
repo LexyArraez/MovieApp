@@ -2,7 +2,7 @@
 export const MovieLogo = () => {
   return (
     <div>
-      <header className="relative z-10 px-5 py-6 md:px-12 ">
+      <header>
         <div className="flex items-center select-none">
           <img
             src="/img/screen-removebg-preview.png"

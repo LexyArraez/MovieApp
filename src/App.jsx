@@ -1,11 +1,11 @@
-import { LandingPage } from "./pages/LandingPage"
+import { Router } from "./Router";
+
 
 function App() {
     return (
-        <div>
-        <LandingPage></LandingPage>
-
-        </div>
+       <>
+       <Router/>
+       </>
     )
 }
 
