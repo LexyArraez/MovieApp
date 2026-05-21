@@ -8,12 +8,14 @@ export const AppLayout = () => {
         <div className="flex flex-col h-screen w-full bg-bg-page text-white overflow-hidden">
             <NavBar />
 
-            <div className="hidden md:flex h-full overflow-hidden">
-                <Sidebar />
-            </div>
+            <div className="flex flex-1 overflow-hidden">
+                <div className="hidden md:flex">
+                    <Sidebar />
+                </div>
 
-            <div className="flex-1  overflow-auto">
-                <Outlet />
+                <div className="flex-1 overflow-auto">
+                    <Outlet />
+                </div>
             </div>
         </div>
     )

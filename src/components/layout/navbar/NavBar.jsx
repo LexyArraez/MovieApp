@@ -3,7 +3,7 @@ import { Search } from "../../common/Search";
 import { NavMenu } from "./NavMenu";
 import { UserProfile } from "./UserProfile";
 import { Button } from "../../common/Button";
-import { Bell, Menu } from "lucide-react";
+import { Bell, SearchIcon } from "lucide-react";
 import { MovieLogo } from "../../common/MovieLogo";
 
 export const NavBar = () => {
@@ -19,15 +19,7 @@ export const NavBar = () => {
         
             <div className="flex items-center gap-2 md:gap-10">
                
-                <div className="md:hidden">
-                    <Button 
-                        variant="text" 
-                        icon={Menu} 
-                        onClick={() => console.log("Abrir menú")}
-                        aria-label="Open menu"
-                       
-                    />
-                </div>
+               
 
             
                 <div className=" items-center gap-2 select-none">
@@ -50,6 +42,15 @@ export const NavBar = () => {
                         onChange={handleSearchChange}
                         placeholder="Search movies..."
                         maxWidth="max-w-xs"
+                    />
+                </div>
+                 <div className="md:hidden">
+                    <Button 
+                        variant="text" 
+                        icon={SearchIcon} 
+                        onClick={() => console.log("open search")}
+                        aria-label="Open search"
+                       
                     />
                 </div>
 

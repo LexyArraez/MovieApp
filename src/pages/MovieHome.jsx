@@ -1,9 +1,9 @@
-import { NavBar } from "../components/layout/navbar/NavBar"
+import { FilterBar } from "../components/movieHome/FilterBar"
 
 export const MovieHome = () => {
     return (
-        <div>
-            
+        <div className="">
+            <FilterBar/>
         </div>
     )
 }
