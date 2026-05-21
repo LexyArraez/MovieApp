@@ -5,7 +5,7 @@ import { MovieLogo } from "../../common/MovieLogo"
 
 export const Sidebar = () => {
     return (
-        <div className="w-64 h-140  flex flex-col ">
+        <div className="w-64 h-full  flex flex-col ">
            
             <nav className="flex flex-col gap-2 px-3 mt-4">
                 {menu.map((item) => (

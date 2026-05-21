@@ -13,8 +13,8 @@ export const Button = ({ children,
     text: " hover:text-gray-500 text-base bg-transparent p-2",
     filter: `px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
       isActive 
-        ? "bg-blue-200 text-blue-900" 
-        : "bg-neutral-800 text-stone-300 hover:bg-neutral-700" 
+        ? "bg-text-title text-bg-page" 
+        : "bg-neutral-800 text-text-4k hover:bg-neutral-700" 
     }`
   };
 

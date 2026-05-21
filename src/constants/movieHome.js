@@ -1,1 +1,0 @@
-export const GENRES = ['All', 'Action', 'Sci-Fi', 'Drama', 'Thriller', 'Fantasy', 'Animation', 'Documentary'];
