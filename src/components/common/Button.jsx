@@ -1,5 +1,6 @@
 export const Button = ({ children,
   variant = 'primary',
+  isActive = false,
   icon: Icon,
   onClick,
   className = '',
@@ -9,7 +10,12 @@ export const Button = ({ children,
 
   const variants = {
     primary: "bg-text-title hover:bg-blue-900 text-white px-15 md:px-6 py-4 rounded-l-xl rounded-r-xl text-base",
-    text: " hover:text-gray-500 text-base bg-transparent p-2"
+    text: " hover:text-gray-500 text-base bg-transparent p-2",
+    filter: `px-5 py-2.5 rounded-full text-sm font-medium transition-colors ${
+      isActive 
+        ? "bg-blue-200 text-blue-900" 
+        : "bg-neutral-800 text-stone-300 hover:bg-neutral-700" 
+    }`
   };
 
   return (

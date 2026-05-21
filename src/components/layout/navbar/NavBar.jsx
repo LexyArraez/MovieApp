@@ -14,9 +14,9 @@ export const NavBar = () => {
     };
 
     return (
-        <header className="w-full bg-bg-page text-white px-4 md:px-8 py-3 flex items-center justify-between border-b border-white/5 sticky top-0 z-50">
+        <header className="w-full  text-white px-4 md:px-8 py-3 flex items-center justify-between border-b border-white/5 sticky top-0 z-50">
             
-            
+        
             <div className="flex items-center gap-2 md:gap-10">
                
                 <div className="md:hidden">
@@ -30,7 +30,7 @@ export const NavBar = () => {
                 </div>
 
             
-                <div className="flex md:hidden items-center gap-2 select-none">
+                <div className=" items-center gap-2 select-none">
                     <MovieLogo/>
                 </div>
 
