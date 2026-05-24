@@ -1,16 +1,21 @@
 import { Outlet } from "react-router-dom"
-import { Sidebar } from "../components/layout/Sidebar"
+import { Sidebar } from "../components/layout/sidebar/Sidebar"
 import { MovieLogo } from "../components/common/MovieLogo"
+import { NavBar } from "../components/layout/navbar/NavBar"
 
 export const AppLayout = () => {
     return (
-        <div className="flex h-screen">
-            <div className="hidden md:flex">
-                <Sidebar />
-            </div>
+        <div className="flex flex-col h-screen w-full bg-bg-page text-white overflow-hidden">
+            <NavBar />
 
-            <div className="flex-1 mt-16 md:mt-0 overflow-auto">
-                <Outlet />
+            <div className="flex flex-1 overflow-hidden">
+                <div className="hidden md:flex">
+                    <Sidebar />
+                </div>
+
+                <div className="flex-1 overflow-auto">
+                    <Outlet />
+                </div>
             </div>
         </div>
     )

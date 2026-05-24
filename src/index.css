@@ -60,3 +60,12 @@
   --radius-xl: 0.75rem;
   --radius-full: 999px;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+.no-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}

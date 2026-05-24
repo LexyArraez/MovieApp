@@ -9,7 +9,7 @@ export const UserProfile = ({ avatarUrl, onClick }) => {
             >
                 <img
                     src={avatarUrl || "https://via.placeholder.com/150"}
-                    alt=""
+                    alt="user"
                     className="w-full h-full object-cover"
                 />
             </button>

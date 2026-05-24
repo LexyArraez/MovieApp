@@ -1,16 +1,13 @@
 import { ItemSidebar } from "./ItemSidebar"
-import { footerMenu, menu } from "../../constants/sidebar"
-import { Button } from "../common/Button"
-import { MovieLogo } from "../common/MovieLogo"
+import { footerMenu, menu } from "../../../constants/sidebar"
+import { Button } from "../../common/Button"
+import { MovieLogo } from "../../common/MovieLogo"
 
 export const Sidebar = () => {
     return (
-        <div className="w-70 h-screen bg-bg-page flex flex-col ">
-            <div className="px-3 py-2">
-                <MovieLogo />
-            </div>
-
-            <nav className="flex flex-col gap-5 px-3 mt-4">
+        <div className="w-64 h-full  flex flex-col ">
+           
+            <nav className="flex flex-col gap-2 px-3 mt-4">
                 {menu.map((item) => (
                     <ItemSidebar
                         key={item.label}
