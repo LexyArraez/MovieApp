@@ -1,5 +1,4 @@
-import { Star } from 'lucide-react'
-
+import { Star, Film } from 'lucide-react'
 
 export const CardMovie = ({ movie }) => {
   const { title, posterUrl, releaseYear, rating } = movie
@@ -15,8 +14,9 @@ export const CardMovie = ({ movie }) => {
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-neutral-500 text-sm">
-            Sin poster
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-neutral-600">
+            <Film className="w-10 h-10" />
+            <span className="text-xs text-center px-2 line-clamp-2">{title}</span>
           </div>
         )}
       </div>
@@ -35,5 +35,4 @@ export const CardMovie = ({ movie }) => {
       </div>
     </div>
   )
-};
-
+}
