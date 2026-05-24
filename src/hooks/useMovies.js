@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { fetchPopularMovies, fetchMoviesByGenre } from '../api/movies.api.js'
+import { fetchDiscoverMovies } from '../api/movies.api.js'
 
-export function useMovies({ genreId = null } = {}) {
+
+export function useMovies({ genreId = null, minRating = null, trending = false } = {}) {
   const [movies, setMovies] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
@@ -11,6 +12,7 @@ export function useMovies({ genreId = null } = {}) {
   const cancelledRef = useRef(false)
 
   const load = useCallback(async (page, reset) => {
+   
     if (page === 1) {
       setLoading(true)
     } else {
@@ -19,14 +21,15 @@ export function useMovies({ genreId = null } = {}) {
     setError(null)
 
     try {
-      const data = genreId
-        ? await fetchMoviesByGenre({ genreId, page })
-        : await fetchPopularMovies({ page })
+      
+      const data = await fetchDiscoverMovies({ genreId, minRating, trending, page })
 
       if (cancelledRef.current) return
 
       setMovies(prev => {
         if (reset) return data.results
+       
+
         const existingIds = new Set(prev.map(m => m.id))
         return [...prev, ...data.results.filter(m => !existingIds.has(m.id))]
       })
@@ -40,16 +43,20 @@ export function useMovies({ genreId = null } = {}) {
         setLoadingMore(false)
       }
     }
-  }, [genreId])
+  }, [genreId, minRating, trending]) 
 
+  
   useEffect(() => {
     cancelledRef.current = false
     setMovies([])
     setCurrentPage(1)
     setTotalPages(1)
     load(1, true)
-    return () => { cancelledRef.current = true }
-  }, [genreId])
+
+    return () => {
+      cancelledRef.current = true
+    }
+  }, [genreId, minRating, trending]) 
 
   const loadMore = useCallback(() => {
     if (!loadingMore && !loading && currentPage < totalPages) {

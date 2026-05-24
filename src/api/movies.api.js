@@ -6,6 +6,11 @@ export async function fetchPopularMovies({ page = 1, language = 'en-US' } = {}) 
   return mapPaginatedMovies(data)
 }
 
+export async function fetchTrendingMovies({ page = 1, language = 'en-US' } = {}) {
+  const data = await tmdbFetch('/trending/movie/week', { page, language })
+  return mapPaginatedMovies(data)
+}
+
 export async function fetchMoviesByGenre({ genreId, page = 1, language = 'en-US' } = {}) {
   const data = await tmdbFetch('/discover/movie', {
     with_genres: genreId,
@@ -13,6 +18,31 @@ export async function fetchMoviesByGenre({ genreId, page = 1, language = 'en-US'
     language,
     sort_by: 'popularity.desc',
   })
+  return mapPaginatedMovies(data)
+}
+
+export async function fetchDiscoverMovies({
+  genreId = null,
+  minRating = null,
+  trending = false,
+  page = 1,
+  language = 'en-US',
+} = {}) {
+  
+  if (trending && !genreId && !minRating) {
+    return fetchTrendingMovies({ page, language })
+  }
+
+  const params = {
+    page,
+    language,
+    sort_by: trending ? 'popularity.desc' : 'popularity.desc',
+  }
+
+  if (genreId) params.with_genres = genreId
+  if (minRating) params['vote_average.gte'] = minRating
+
+  const data = await tmdbFetch('/discover/movie', params)
   return mapPaginatedMovies(data)
 }
 

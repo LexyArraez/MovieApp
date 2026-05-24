@@ -1,10 +1,13 @@
 import { Router } from "./Router";
+import { SearchProvider } from "./hooks/context/SearchContext";
 
 
 function App() {
     return (
        <>
-       <Router/>
+       <SearchProvider>
+         <Router/>
+       </SearchProvider>
        </>
     )
 }

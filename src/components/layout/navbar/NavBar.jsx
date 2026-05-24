@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Search } from "../../common/Search";
 import { NavMenu } from "./NavMenu";
 import { UserProfile } from "./UserProfile";
 import { Button } from "../../common/Button";
 import { Bell, SearchIcon } from "lucide-react";
 import { MovieLogo } from "../../common/MovieLogo";
+import { SearchContext } from "../../../hooks/context/SearchContext";
 
 export const NavBar = () => {
-    const [searchQuery, setSearchQuery] = useState("");
+    const { searchQuery, setSearchQuery } = useContext(SearchContext);
 
     const handleSearchChange = (value) => {
         setSearchQuery(value);
@@ -39,7 +40,7 @@ export const NavBar = () => {
                         maxWidth="max-w-xs"
                     />
                 </div>
-                 <div className="md:hidden">
+                <div className="md:hidden">
                     <Button
                         variant="text"
                         icon={SearchIcon}
@@ -62,7 +63,7 @@ export const NavBar = () => {
 
 
                 <div className="flex">
-                    <UserProfile avatarUrl="" onClick={() => console.log("Menu de usuario")} />
+                    <UserProfile  onClick={() => console.log("Menu de usuario")} />
                 </div>
             </div>
 
