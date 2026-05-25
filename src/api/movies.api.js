@@ -58,6 +58,10 @@ export async function fetchMovieById({ id, language = 'en-US' } = {}) {
   const data = await tmdbFetch(`/movie/${id}`, { language })
   return mapMovieDetail(data)
 }
+export async function fetchMovieCredits({ id, language = 'en-US' } = {}) {
+  const data = await tmdbFetch(`/movie/${id}/credits`, { language })
+  return mapCredits(data)
+}
 
 export async function fetchGenres({ language = 'en-US' } = {}) {
   const data = await tmdbFetch('/genre/movie/list', { language })
