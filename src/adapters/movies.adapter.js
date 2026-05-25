@@ -56,13 +56,28 @@ export function mapCredits(raw) {
     .sort((a, b) => a.order - b.order)      
     .slice(0, 10)                            
     .map(mapCastMember)
-
- 
-  const directors = (raw.crew ?? [])
+const directors = (raw.crew ?? [])
     .filter(person => person.job === 'Director')
     .map(mapCrewMember)
 
   return { cast, directors }
+}
+
+
+
+export function mapActorDetail(raw) {
+  return {
+    id: raw.id,
+    name: raw.name ?? '',
+    biography: raw.biography ?? '',
+    birthday: raw.birthday ?? null,
+    placeOfBirth: raw.place_of_birth ?? null,   
+    profileUrl: raw.profile_path
+      ? `${IMAGE_BASE}/w500${raw.profile_path}`
+      : null,
+    popularity: raw.popularity ?? 0,
+    knownForDepartment: raw.known_for_department ?? '', 
+  }
 }
 
 export function mapGenre(raw) {

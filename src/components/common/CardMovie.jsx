@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom'
 import { Star, Film } from 'lucide-react'
 
 export const CardMovie = ({ movie }) => {
-  const { title, posterUrl, releaseYear, rating } = movie
+  
+  const { id, title, posterUrl, releaseYear, rating } = movie
 
   return (
-    <div className="group bg-bg-card rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200">
+    
+    <Link to={`/movie/${id}`} className="block group bg-bg-card rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200">
+      
       <div className="aspect-2/3 w-full overflow-hidden bg-neutral-800">
         {posterUrl ? (
           <img
@@ -33,6 +37,7 @@ export const CardMovie = ({ movie }) => {
           </div>
         </div>
       </div>
-    </div>
+
+    </Link> 
   )
 }

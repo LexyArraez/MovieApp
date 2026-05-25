@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchMovieById, fetchMovieCredits } from '../api/movies.api.js'
+import { fetchMovieById, fetchMovieCredits } from '../api/movies.api'
 
 
 export function useMovieDetail(movieId) {
