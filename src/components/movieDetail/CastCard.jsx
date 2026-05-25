@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
   return (
     <button
       onClick={() => navigate(`/actor/${actor.id}`)}
-      className="flex flex-col items-center gap-2 shrink-0 w-20 group"
+      className="flex flex-col items-center gap-2 shrink-0 w-25 group"
     >
       
       <div className="w-16 h-16 rounded-full overflow-hidden bg-neutral-800 flex items-center justify-center shrink-0">

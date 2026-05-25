@@ -1,17 +1,17 @@
-import { useParams } from 'react-router-dom'
-import { AlertCircle, RotateCcw } from 'lucide-react'
+import { useParams, useNavigate  } from 'react-router-dom'
+import { AlertCircle, RotateCcw, ArrowLeft} from 'lucide-react'
 import { useMovieDetail } from '../hooks/useMovieDetail'
 import { MovieBackdrop } from '../components/movieDetail/MovieBackdrop'
 import { MovieInfo } from '../components/movieDetail/MovieInfo'
 import { MovieActions } from '../components/movieDetail/MovieActions'
 import { MovieOverview } from '../components/movieDetail/MovieOverview'
 import { MovieCast } from '../components/movieDetail/MovieCast'
-
 import { Button } from '../components/common/Button'
 import { MovieRecommendations } from '../components/movieDetail/MovieRecommendations' 
 
 export const MovieDetail = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { movie, credits, loading, error } = useMovieDetail(id)
 
   
@@ -45,11 +45,11 @@ export const MovieDetail = () => {
 
   return (
     <div className="min-h-screen bg-bg-page">
-
       <MovieBackdrop
         title={movie.title}
         tagline={movie.tagline}
         backdropUrl={movie.backdropUrl}
+        onBack={() => navigate(-1)}
       />
 
       <div className="md:grid md:grid-cols-[1fr_280px] md:gap-8 md:px-10">

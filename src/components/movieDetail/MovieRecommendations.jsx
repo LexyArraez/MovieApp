@@ -34,7 +34,7 @@ export const MovieRecommendations = ({ cast = [], currentMovieId }) => {
         });
 
         setRecommendedMovies(uniqueMovies.slice(0, 15))
-        setCurrentPage(0) 
+        setCurrentPage(0)
       })
       .catch((err) => console.error('Error:', err))
       .finally(() => setLoading(false))
@@ -55,7 +55,7 @@ export const MovieRecommendations = ({ cast = [], currentMovieId }) => {
   }
 
   return (
-    <div className="px-6 md:px-10 py-6">
+    <div className="px-6 md:px-5 py-6">
       
       
       <div className="flex items-center justify-between mb-4">
