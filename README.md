@@ -38,8 +38,10 @@ src/
 Crea un archivo `.env` en la raíz del proyecto basándote en `.env.example`:
 
 ```
-VITE_TMDB_API_KEY=tu_api_key_aqui
+VITE_TMBD_API_URL=https://api.themoviedb.org/3
 VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+VITE_TMDB_API_KEY=tu_api_key_aqui
+VITE_TMBD_API_TOKEN=tu_api_token_aqui
 ```
 
 Puedes obtener tu API key en [themoviedb.org → Settings → API](https://www.themoviedb.org/settings/api).
