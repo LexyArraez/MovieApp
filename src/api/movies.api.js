@@ -1,17 +1,17 @@
 import { tmdbFetch } from './tmdb.client.js'
 import { mapGenre, mapMovie, mapMovieDetail, mapPaginatedMovies, mapCredits, mapActorDetail, mapActorMovies } from '../adapters/movies.adapter.js'
 
-export async function fetchPopularMovies({ page = 1, language = 'en-US' } = {}) {
+export async function fetchPopularMovies({ page = 1, language = 'es-ES' } = {}) {
   const data = await tmdbFetch('/movie/popular', { page, language })
   return mapPaginatedMovies(data)
 }
 
-export async function fetchTrendingMovies({ page = 1, language = 'en-US' } = {}) {
+export async function fetchTrendingMovies({ page = 1, language = 'es-ES' } = {}) {
   const data = await tmdbFetch('/trending/movie/week', { page, language })
   return mapPaginatedMovies(data)
 }
 
-export async function fetchMoviesByGenre({ genreId, page = 1, language = 'en-US' } = {}) {
+export async function fetchMoviesByGenre({ genreId, page = 1, language = 'es-ES' } = {}) {
   const data = await tmdbFetch('/discover/movie', {
     with_genres: genreId,
     page,
@@ -21,7 +21,7 @@ export async function fetchMoviesByGenre({ genreId, page = 1, language = 'en-US'
   return mapPaginatedMovies(data)
 }
 
-export async function fetchDiscoverMovies({ genreId = null, minRating = null, trending = false, page = 1, language = 'en-US' } = {}) {
+export async function fetchDiscoverMovies({ genreId = null, minRating = null, trending = false, page = 1, language = 'es-ES' } = {}) {
   if (trending && !genreId && !minRating) {
     return fetchTrendingMovies({ page, language })
   }
@@ -32,7 +32,7 @@ export async function fetchDiscoverMovies({ genreId = null, minRating = null, tr
   return mapPaginatedMovies(data)
 }
 
-export async function searchMovies({ query, page = 1, language = 'en-US' } = {}) {
+export async function searchMovies({ query, page = 1, language = 'es-ES' } = {}) {
   if (!query?.trim()) {
     return { results: [], page: 1, totalPages: 0, totalResults: 0, hasNextPage: false }
   }
@@ -40,22 +40,22 @@ export async function searchMovies({ query, page = 1, language = 'en-US' } = {})
   return mapPaginatedMovies(data)
 }
 
-export async function fetchMovieById({ id, language = 'en-US' } = {}) {
+export async function fetchMovieById({ id, language = 'es-ES' } = {}) {
   const data = await tmdbFetch(`/movie/${id}`, { language })
   return mapMovieDetail(data)
 }
 
-export async function fetchMovieCredits({ id, language = 'en-US' } = {}) {
+export async function fetchMovieCredits({ id, language = 'es-ES' } = {}) {
   const data = await tmdbFetch(`/movie/${id}/credits`, { language })
   return mapCredits(data)
 }
 
-export async function fetchGenres({ language = 'en-US' } = {}) {
+export async function fetchGenres({ language = 'es-ES' } = {}) {
   const data = await tmdbFetch('/genre/movie/list', { language })
   return (data.genres ?? []).map(mapGenre)
 }
 
-export async function fetchMoviesByCast({ castId, page = 1, language = 'en-US' } = {}) {
+export async function fetchMoviesByCast({ castId, page = 1, language = 'es-ES' } = {}) {
   if (!castId) return { results: [], page: 1, totalPages: 0, totalResults: 0, hasNextPage: false }
   const data = await tmdbFetch('/discover/movie', {
     with_cast: castId,
@@ -67,13 +67,13 @@ export async function fetchMoviesByCast({ castId, page = 1, language = 'en-US' }
 }
 
 
-export async function fetchActorById({ id, language = 'en-US' } = {}) {
+export async function fetchActorById({ id, language = 'es-ES' } = {}) {
   const data = await tmdbFetch(`/person/${id}`, { language })
   return mapActorDetail(data)
 }
 
 
-export async function fetchActorMovies({ id, language = 'en-US' } = {}) {
+export async function fetchActorMovies({ id, language = 'es-ES' } = {}) {
   const data = await tmdbFetch(`/person/${id}/movie_credits`, { language })
   return mapActorMovies(data) 
 }
