@@ -32,11 +32,11 @@ function mapCastMember(raw) {
   return {
     id: raw.id,
     name: raw.name ?? '',
-    character: raw.character ?? '',         
+    character: raw.character ?? '',
     profileUrl: raw.profile_path
       ? `${IMAGE_BASE}/w185${raw.profile_path}`
       : null,
-    order: raw.order ?? 99,                 
+    order: raw.order ?? 99,
   }
 }
 
@@ -44,7 +44,7 @@ function mapCrewMember(raw) {
   return {
     id: raw.id,
     name: raw.name ?? '',
-    job: raw.job ?? '',                     
+    job: raw.job ?? '',
     department: raw.department ?? '',
     profileUrl: raw.profile_path
       ? `${IMAGE_BASE}/w185${raw.profile_path}`
@@ -53,16 +53,19 @@ function mapCrewMember(raw) {
 }
 export function mapCredits(raw) {
   const cast = (raw.cast ?? [])
-    .sort((a, b) => a.order - b.order)      
-    .slice(0, 10)                            
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 12)
     .map(mapCastMember)
-const directors = (raw.crew ?? [])
-    .filter(person => person.job === 'Director')
-    .map(mapCrewMember)
+
+  const directors = (raw.crew ?? [])
+  .filter(person => person.job === 'Director' || person.job === 'Producer')
+  .filter((person, index, self) =>
+    index === self.findIndex(p => p.id === person.id)
+  )
+  .map(mapCrewMember)
 
   return { cast, directors }
 }
-
 
 
 export function mapActorDetail(raw) {
@@ -71,12 +74,12 @@ export function mapActorDetail(raw) {
     name: raw.name ?? '',
     biography: raw.biography ?? '',
     birthday: raw.birthday ?? null,
-    placeOfBirth: raw.place_of_birth ?? null,   
+    placeOfBirth: raw.place_of_birth ?? null,
     profileUrl: raw.profile_path
       ? `${IMAGE_BASE}/w500${raw.profile_path}`
       : null,
     popularity: raw.popularity ?? 0,
-    knownForDepartment: raw.known_for_department ?? '', 
+    knownForDepartment: raw.known_for_department ?? '',
   }
 }
 

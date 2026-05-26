@@ -1,55 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { fetchMoviesByCast } from '../../api/movies.api' 
 import { CardMovie } from '../common/CardMovie' 
 import { Button } from '../common/Button' 
 
-export const MovieRecommendations = ({ cast = [], currentMovieId }) => {
-
-  const [recommendedMovies, setRecommendedMovies] = useState([])
-  const [loading, setLoading] = useState(true)
+export const MovieRecommendations = ({ movies = [], loading }) => {
   const [currentPage, setCurrentPage] = useState(0)
-  
   const moviesPerPage = 5
 
-  useEffect(() => {
-    if (!cast || cast.length === 0) return
+  if (loading || movies.length === 0) return null
 
-    setLoading(true)
-    const topActors = cast.slice(0, 3)
-
-    Promise.all(
-      topActors.map(actor => fetchMoviesByCast({ castId: actor.id }))
-    )
-      .then((results) => {
-        const allMovies = results.flatMap(data => data.results || [])
-        const uniqueMovies = [];
-        const movieIdsSet = new Set();
-
-        allMovies.forEach(movie => {
-          if (movie.id !== Number(currentMovieId) && !movieIdsSet.has(movie.id)) {
-            movieIdsSet.add(movie.id);
-            uniqueMovies.push(movie);
-          }
-        });
-
-        setRecommendedMovies(uniqueMovies.slice(0, 15))
-        setCurrentPage(0)
-      })
-      .catch((err) => console.error('Error:', err))
-      .finally(() => setLoading(false))
-  }, [cast, currentMovieId])
-
-  if (loading || recommendedMovies.length === 0) return null
-
-  const totalPages = Math.ceil(recommendedMovies.length / moviesPerPage)
+  const totalPages = Math.ceil(movies.length / moviesPerPage)
   const startIndex = currentPage * moviesPerPage
-  const visibleMovies = recommendedMovies.slice(startIndex, startIndex + moviesPerPage)
+  const visibleMovies = movies.slice(startIndex, startIndex + moviesPerPage)
 
   const nextPage = () => {
     if (currentPage < totalPages - 1) setCurrentPage(currentPage + 1)
   }
-
   const prevPage = () => {
     if (currentPage > 0) setCurrentPage(currentPage - 1)
   }
@@ -59,7 +26,7 @@ export const MovieRecommendations = ({ cast = [], currentMovieId }) => {
       
       
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-white">Recommended For You</h2>
+        <h2 className="text-xl font-bold text-white">Recomendado Para Ti</h2>
         
         
         <div className="flex items-center gap-2">

@@ -10,7 +10,7 @@ export const MovieCast = ({ cast = [], directors = [] }) => {
       {directors.length > 0 && (
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-white mb-3">
-            {directors.length > 1 ? 'Directores' : 'Director'}
+            {directors.length > 1 ? 'Directores,Productores' : 'Director'}
           </h2>
           <div className="flex gap-4">
             {directors.map((director) => (
@@ -23,7 +23,7 @@ export const MovieCast = ({ cast = [], directors = [] }) => {
     
       {cast.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold text-white mb-3">The Cast</h2>
+          <h2 className="text-lg font-semibold text-white mb-3">Elenco</h2>
           
           <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
             {cast.map((actor) => (
