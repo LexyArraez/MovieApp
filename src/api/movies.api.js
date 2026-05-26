@@ -1,5 +1,5 @@
 import { tmdbFetch } from './tmdb.client.js'
-import { mapGenre, mapMovie, mapMovieDetail, mapPaginatedMovies, mapCredits, mapActorDetail } from '../adapters/movies.adapter.js'
+import { mapGenre, mapMovie, mapMovieDetail, mapPaginatedMovies, mapCredits, mapActorDetail, mapActorMovies } from '../adapters/movies.adapter.js'
 
 export async function fetchPopularMovies({ page = 1, language = 'en-US' } = {}) {
   const data = await tmdbFetch('/movie/popular', { page, language })
@@ -75,12 +75,5 @@ export async function fetchActorById({ id, language = 'en-US' } = {}) {
 
 export async function fetchActorMovies({ id, language = 'en-US' } = {}) {
   const data = await tmdbFetch(`/person/${id}/movie_credits`, { language })
-  const movies = (data.cast ?? [])
-    .sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0))
-    .slice(0, 15)
-    .map(m => ({
-      ...m,
-      genre_ids: m.genre_ids ?? [],
-    }))
-  return { results: movies.map(mapMovie) }
+  return mapActorMovies(data) 
 }

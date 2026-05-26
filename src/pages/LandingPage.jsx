@@ -3,7 +3,7 @@ import { HeroBody } from "../components/landing/HeroBody"
 import { Button } from "../components/common/Button"
 import { ArrowRight, LogIn } from "lucide-react";
 import { AuthMenu } from "../components/landing/AuthMenu";
-import { FooterLanding } from "../components/landing/FooterLanding";
+import { FooterLanding } from "../components/layout/FooterLanding";
 
 
 export const LandingPage = () => {
@@ -23,10 +23,8 @@ export const LandingPage = () => {
                 <HeroBody />
                 <AuthMenu />
             </main>
+            <FooterLanding />
 
-            <div>
-                <FooterLanding />
-            </div>
 
         </div>
     )

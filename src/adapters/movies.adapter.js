@@ -96,3 +96,11 @@ export function mapPaginatedMovies(raw) {
     hasNextPage: (raw.page ?? 1) < (raw.total_pages ?? 1),
   }
 }
+export function mapActorMovies(raw) {
+  const results = (raw.cast ?? [])
+    .sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0))
+    .slice(0, 15)
+    .map(m => mapMovie({ ...m, genre_ids: m.genre_ids ?? [] }))
+
+  return { results }
+}

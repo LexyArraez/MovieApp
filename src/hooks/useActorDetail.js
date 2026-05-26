@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { fetchActorById, fetchActorMovies, } from '../api/movies.api.js'
-
+import { fetchActorById, fetchActorMovies } from '../api/movies.api.js'
+import { mapActorDetail, mapActorMovies } from '../adapters/movies.adapter.js' 
 
 export function useActorDetail(actorId) {
   const [actor, setActor]   = useState(null)
@@ -23,8 +23,8 @@ export function useActorDetail(actorId) {
     ])
       .then(([actorData, moviesData]) => {
         if (cancelled) return
-        setActor(actorData)
-        setMovies(moviesData.results)
+        setActor(mapActorDetail(actorData))       
+        setMovies(mapActorMovies(moviesData).results) 
       })
       .catch(err => {
         if (!cancelled) setError(err)

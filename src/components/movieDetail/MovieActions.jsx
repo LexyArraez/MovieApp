@@ -24,7 +24,7 @@ export const MovieActions = ({ trailerUrl, onWatchlist }) => {
           className="opacity-40 cursor-not-allowed"
           onClick={() => {}}
         >
-          Trailer no disponible
+          Trailer not Available
         </Button>
       )}
 
@@ -34,7 +34,7 @@ export const MovieActions = ({ trailerUrl, onWatchlist }) => {
         iconPosition="left"
         onClick={onWatchlist}
       >
-        Watchlist
+        Save to List
       </Button>
     </div>
   )
