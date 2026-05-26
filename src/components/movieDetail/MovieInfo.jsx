@@ -18,7 +18,7 @@ export const MovieInfo = ({ genres = [], releaseYear, runtime, rating, voteCount
       {genres.map((genre) => (
         <span
           key={genre.id}
-          className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-800 text-neutral-300 border border-neutral-700"
+          className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-800 text-text-4k "
         >
           {genre.name}
         </span>

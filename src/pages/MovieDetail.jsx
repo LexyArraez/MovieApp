@@ -1,18 +1,48 @@
-import { useParams, useNavigate  } from 'react-router-dom'
-import { AlertCircle, RotateCcw, ArrowLeft} from 'lucide-react'
+import { useState, useEffect } from 'react'  
+import { useParams, useNavigate } from 'react-router-dom'
+import { AlertCircle, RotateCcw } from 'lucide-react'
 import { useMovieDetail } from '../hooks/useMovieDetail'
+import { fetchMoviesByCast } from '../api/movies.api'  // añadir
 import { MovieBackdrop } from '../components/movieDetail/MovieBackdrop'
 import { MovieInfo } from '../components/movieDetail/MovieInfo'
 import { MovieActions } from '../components/movieDetail/MovieActions'
 import { MovieOverview } from '../components/movieDetail/MovieOverview'
 import { MovieCast } from '../components/movieDetail/MovieCast'
+import { MovieRecommendations } from '../components/movieDetail/MovieRecommendations'
 import { Button } from '../components/common/Button'
-import { MovieRecommendations } from '../components/movieDetail/MovieRecommendations' 
+
 
 export const MovieDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const { movie, credits, loading, error } = useMovieDetail(id)
+
+  
+  const [recommendedMovies, setRecommendedMovies] = useState([])
+  const [loadingRecommendations, setLoadingRecommendations] = useState(true)
+
+  useEffect(() => {
+    if (!credits.cast || credits.cast.length === 0) return
+    setLoadingRecommendations(true)
+
+    const topActors = credits.cast.slice(0, 3)
+
+    Promise.all(topActors.map(actor => fetchMoviesByCast({ castId: actor.id })))
+      .then((results) => {
+        const allMovies = results.flatMap(data => data.results || [])
+        const unique = []
+        const seen = new Set()
+        allMovies.forEach(movie => {
+          if (movie.id !== Number(id) && !seen.has(movie.id)) {
+            seen.add(movie.id)
+            unique.push(movie)
+          }
+        })
+        setRecommendedMovies(unique.slice(0, 15))
+      })
+      .catch(err => console.error('Error:', err))
+      .finally(() => setLoadingRecommendations(false))
+  }, [credits.cast, id])
 
   
 
@@ -75,10 +105,9 @@ export const MovieDetail = () => {
             directors={credits.directors}
           />
 
-         
-          <MovieRecommendations 
-            cast={credits.cast} 
-            currentMovieId={id} 
+          <MovieRecommendations
+            movies={recommendedMovies}
+            loading={loadingRecommendations}
           />
         </div>
          

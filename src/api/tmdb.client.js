@@ -42,8 +42,8 @@ export async function tmdbFetch(path, params = {}, { timeout = DEFAULT_TIMEOUT_M
         errorData
       )
     }
-
     return await response.json()
+    
   } catch (err) {
     clearTimeout(timer)
     if (err.name === 'AbortError') {

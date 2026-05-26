@@ -26,7 +26,7 @@ export const FilterBar = ({
   const activeFilters = []
   if (activeGenreName) activeFilters.push({ label: activeGenreName, onRemove: () => onGenreChange(null) })
   if (minRating) activeFilters.push({ label: `${minRating}+`, icon: Star, onRemove: () => onRatingChange(null) })
-  if (trending) activeFilters.push({ label: 'Trending', onRemove: () => onTrendingChange(false) })
+  if (trending) activeFilters.push({ label: 'Tendencia', onRemove: () => onTrendingChange(false) })
 
   return (
     <div className="w-full py-4 flex flex-col gap-3">
@@ -35,7 +35,7 @@ export const FilterBar = ({
         <Button
           variant="text"
           onClick={() => scroll('left')}
-          className="absolute left-0 inset-y-0 z-10 flex items-center justify-center w-8 bg-linear-to-r from-bg-page to-transparent text-text-4k"
+          className="absolute left-0 inset-y-0 z-10 flex items-center justify-center w-15 bg-linear-to-r from-bg-page to-transparent text-text-4k"
           aria-label="Scroll left"
           icon={ChevronLeft}
         />
@@ -50,7 +50,7 @@ export const FilterBar = ({
             onClick={() => onGenreChange(null)}
             className="whitespace-nowrap shrink-0 snap-start"
           >
-            All
+            Todos
           </Button>
 
           {genres.map((genre) => (
@@ -69,7 +69,7 @@ export const FilterBar = ({
         <Button
           variant="text"
           onClick={() => scroll('right')}
-          className="absolute right-0 inset-y-0 z-10 flex items-center justify-center w-8 bg-linear-to-l from-bg-page to-transparent text-text-4k"
+          className="absolute right-0 inset-y-0 z-10 flex items-center justify-center w-15 bg-linear-to-l from-bg-page to-transparent text-text-4k"
           aria-label="Scroll right"
           icon={ChevronRight}
         />
@@ -97,15 +97,15 @@ export const FilterBar = ({
           variant="filter"
           isActive={trending}
           icon={TrendingUp}
-          onClick={() => onTrendingChange(!trending)}
+          onClick={() => onTrendingChange(!trendig)}
           className="whitespace-nowrap shrink-0"
         >
-          Trending
+          Tendencia
         </Button>
       </div>
 
       {activeFilters.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 px-1">
+        <div className="flex flex-wrap items-center gap-2 px-1 ">
           {activeFilters.map((filter) => (
             <Button
               key={filter.label}
@@ -123,7 +123,7 @@ export const FilterBar = ({
             <Button
               variant="text"
               onClick={onClearAll}
-              className="text-sm text-neutral-400 hover:text-white underline underline-offset-2"
+              className="text-sm text-text-4k hover:text-white underline underline-offset-2"
             >
               Limpiar todo
             </Button>

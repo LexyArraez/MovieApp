@@ -36,7 +36,7 @@ export const NavBar = () => {
                     <Search
                         value={searchQuery}
                         onChange={handleSearchChange}
-                        placeholder="Search movies..."
+                        placeholder="Buscar Peliculsas..."
                         maxWidth="max-w-xs"
                     />
                 </div>

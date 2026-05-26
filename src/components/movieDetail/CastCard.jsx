@@ -19,12 +19,12 @@ import { useNavigate } from 'react-router-dom'
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
           />
         ) : (
-          <User className="w-10 h-10 text-neutral-600" />
+          <User className="w-10 h-10" />
         )}
       </div>
 
       <div className="text-center">
-        <p className="text-xs text-white font-medium line-clamp-2 leading-tight">
+        <p className="text-xs text-text-4k font-medium line-clamp-2 group-hover:scale-105 transition-transform duration-200 leading-tight">
           {actor.name}
         </p>
         <p className="text-xs text-neutral-500 line-clamp-1 mt-0.5">
