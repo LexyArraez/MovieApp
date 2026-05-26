@@ -66,6 +66,6 @@ cp .env.example .env
 pnpm dev
 ```
 
-La app estará disponible en `movie-app-git-main-lexyarraez95-9507s-projects.vercel.app`.
+La app estará disponible en `https://movie-jxvwv079c-lexyarraez95-9507s-projects.vercel.app/`
 
 ---
