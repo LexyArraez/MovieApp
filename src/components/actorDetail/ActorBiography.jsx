@@ -32,7 +32,7 @@ export const ActorBiography = ({ biography }) => {
           variant="text"
           icon={expanded ? ChevronUp : ChevronDown}
           onClick={() => setExpanded(prev => !prev)}
-          className="mt-2 text-sm text-neutral-400 hover:text-white p-0"
+          className="mt-2 text-sm text-text-4k hover:text-white p-0"
         >
           {expanded ? 'Ver menos' : 'Ver más'}
         </Button>

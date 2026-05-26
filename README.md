@@ -1,16 +1,69 @@
-# React + Vite
+# 🎬 MovieApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para explorar películas y actores usando la API de [The Movie Database (TMDB)](https://www.themoviedb.org/). Permite buscar películas, filtrar por género, ver detalles y consultar la filmografía de actores.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Stack tecnológico
 
-## React Compiler
+- **React 19** — biblioteca de UI
+- **Vite 8** — bundler y servidor de desarrollo
+- **React Router v7** — navegación y rutas
+- **Tailwind CSS v4** — estilos
+- **Lucide React** — iconos
+- **TMDB API** — fuente de datos de películas y actores
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📁 Estructura del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── adapters/       # Transformación de datos crudos de la API
+├── api/            # Llamada a la API de TMDB
+├── components/     # Componentes reutilizables
+├── constants/      # Constantes y configuración
+├── hooks/          # Custom hooks
+├── pages/          # Páginas/vistas de la aplicación
+├── App.jsx
+├── Router.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## ⚙️ Variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto basándote en `.env.example`:
+
+```
+VITE_TMDB_API_KEY=tu_api_key_aqui
+VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
+```
+
+Puedes obtener tu API key en [themoviedb.org → Settings → API](https://www.themoviedb.org/settings/api).
+
+---
+
+##  Instalación y uso local
+
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/LexyArraez/MovieApp.git
+cd movieapp
+
+# 2. Instala las dependencias
+pnpm install
+
+# 3. Configura las variables de entorno
+cp .env.example .env
+# Edita .env y añade tu API key de TMDB
+
+# 4. Levanta el servidor de desarrollo
+pnpm dev
+```
+
+La app estará disponible en `movie-app-git-main-lexyarraez95-9507s-projects.vercel.app`.
+
+---
