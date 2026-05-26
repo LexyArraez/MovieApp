@@ -1,22 +1,26 @@
-import { Star } from 'lucide-react'
-
+import { Link } from 'react-router-dom'
+import { Star, Film } from 'lucide-react'
 
 export const CardMovie = ({ movie }) => {
-  const { title, posterUrl, releaseYear, rating } = movie
+  
+  const { id, title, posterUrl, backdropUrl, releaseYear, rating } = movie
 
   return (
-    <div className="group bg-bg-card rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200">
+    
+    <Link to={`/movie/${id}`} className="block group bg-bg-card rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200">
+      
       <div className="aspect-2/3 w-full overflow-hidden bg-neutral-800">
-        {posterUrl ? (
+        {posterUrl || backdropUrl ? (
           <img
-            src={posterUrl}
+            src={posterUrl ?? backdropUrl}
             alt={title}
             className="w-full h-full object-cover"
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-neutral-500 text-sm">
-            Sin poster
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-neutral-600">
+            <Film className="w-10 h-10" />
+            <span className="text-xs text-center px-2 line-clamp-2">{title}</span>
           </div>
         )}
       </div>
@@ -33,7 +37,7 @@ export const CardMovie = ({ movie }) => {
           </div>
         </div>
       </div>
-    </div>
-  )
-};
 
+    </Link> 
+  )
+}

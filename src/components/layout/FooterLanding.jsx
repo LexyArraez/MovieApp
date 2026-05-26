@@ -1,4 +1,4 @@
-import { Label } from "./Label"
+import { Label } from "../landing/Label"
 import { Tv, Smartphone } from 'lucide-react';
 import { CopyR } from "../common/CopyR";
 
@@ -8,6 +8,7 @@ export const FooterLanding = () => {
       <div className="flex items-center gap-3">
         <Label icon={Tv} text="4K ULTRA HD" />
         <Label icon={Smartphone} text="MULTI-DISPOSITIVO" />
+        <img src="/img/logo-api.svg" alt="logo api" className="w-30" />
       </div>
       <div className="tracking-wide text-center md:text-right">
         <CopyR company="MovieApp Premium" />
