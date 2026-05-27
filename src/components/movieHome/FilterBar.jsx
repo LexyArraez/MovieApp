@@ -97,7 +97,7 @@ export const FilterBar = ({
           variant="filter"
           isActive={trending}
           icon={TrendingUp}
-          onClick={() => onTrendingChange(!trendig)}
+          onClick={() => onTrendingChange(!trending)}
           className="whitespace-nowrap shrink-0"
         >
           Tendencia
