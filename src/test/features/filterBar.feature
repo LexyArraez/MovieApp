@@ -3,10 +3,12 @@ Feature: Barra de filtros
   Quiero seleccionar y limpiar filtros
   Para ver las películas que coincidan con mis preferencias
 
+
   Scenario: Seleccionar un género
     Given hay géneros disponibles
     When el usuario hace click en "Acción"
     Then se llama a onGenreChange con 28
+    
 
   Scenario: Seleccionar un rating
     Given el filtro de rating actual es "6+"
